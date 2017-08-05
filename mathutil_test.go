@@ -1,4 +1,4 @@
-package mathutil
+package cmn
 
 import "testing"
 
