@@ -74,7 +74,7 @@ func Nextu64n(rnd IRandom, minVal uint64, maxVal uint64) uint64 {
 
 // Nextf32 - Get the next random float32 number
 func Nextf32(rnd IRandom) float32 {
-	return float32(makef32(int32(rnd.Next()), int32(rnd.Next())))
+	return float32(Makef32(int32(rnd.Next()), int32(rnd.Next())))
 }
 
 // Nextf32n - Get the next random float32 number within the specified range
@@ -84,7 +84,7 @@ func Nextf32n(rnd IRandom, minVal float32, maxVal float32) float32 {
 
 // Nextf64 - Get the next random float64 number
 func Nextf64(rnd IRandom) float64 {
-	return float64(makef64(int64(rnd.Next()), int64(rnd.Next())))
+	return float64(Makef64(int64(rnd.Next()), int64(rnd.Next())))
 }
 
 // Nextf64n - Get the next random float64 number within the specified range

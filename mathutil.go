@@ -44,6 +44,54 @@ func Rotru64(value uint64, count uint32) uint64 {
 	return (value >> count) | (value << (64 - count))
 }
 
+// Decompf32 - Decompose a float32 value int two numbers. Given the following:
+//    3.141592
+// The return values will be:
+//    base = 3
+//    frac = 141592
+func Decompf32(val float32) (base int32, frac int32) {
+	b, f := math.Modf(float64(val))
+	return int32(b), int32(f)
+}
+
+// Decompf64 - Decompose a float64 value int two numbers. Given the following:
+//    3.141592
+// The return values will be:
+//    base = 3
+//    frac = 141592
+func Decompf64(val float64) (base int64, frac int64) {
+	b, f := math.Modf(val)
+	return int64(b), int64(f)
+}
+
+// Makef32 - Make a float32 variable from two numbers. Given the following:
+//    base = 3
+//    frac = 141592
+// The return float64 value will be:
+//    3.14159
+func Makef32(base int32, frac int32) float32 {
+	b := float32(base)
+	f := float32(frac)
+	for f > 1.0 {
+		f /= 10.0
+	}
+	return b + f
+}
+
+// Makef64 - Make a float64 variable from two numbers. Given the following:
+//    base = 3
+//    frac = 141592
+// The return float64 value will be:
+//    3.14159
+func Makef64(base int64, frac int64) float64 {
+	b := float64(base)
+	f := float64(frac)
+	for f > 1.0 {
+		f /= 10.0
+	}
+	return b + f
+}
+
 func getRangei16(minVal int16, maxVal int16) int16 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
@@ -106,52 +154,4 @@ func getRangef64(minVal float64, maxVal float64) float64 {
 		return 1.0
 	}
 	return rng
-}
-
-// Decompose a float32 value int two numbers. Given the following:
-//    3.141592
-// The return values will be:
-//    base = 3
-//    frac = 141592
-func decompF32(val float32) (base int32, frac int32) {
-	b, f := math.Modf(float64(val))
-	return int32(b), int32(f)
-}
-
-// Decompose a float64 value int two numbers. Given the following:
-//    3.141592
-// The return values will be:
-//    base = 3
-//    frac = 141592
-func decompF64(val float64) (base int64, frac int64) {
-	b, f := math.Modf(val)
-	return int64(b), int64(f)
-}
-
-// Make a float32 variable from two numbers. Given the following:
-//    base = 3
-//    frac = 141592
-// The return float64 value will be:
-//    3.14159
-func makef32(base int32, frac int32) float32 {
-	b := float32(base)
-	f := float32(frac)
-	for f > 1.0 {
-		f /= 10.0
-	}
-	return b + f
-}
-
-// Make a float64 variable from two numbers. Given the following:
-//    base = 3
-//    frac = 141592
-// The return float64 value will be:
-//    3.14159
-func makef64(base int64, frac int64) float64 {
-	b := float64(base)
-	f := float64(frac)
-	for f > 1.0 {
-		f /= 10.0
-	}
-	return b + f
 }
