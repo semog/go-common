@@ -1,4 +1,4 @@
-package cmn
+package gocommon
 
 import "testing"
 

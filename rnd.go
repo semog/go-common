@@ -1,84 +1,93 @@
 // Generate random numbers with a very high random repeat period.
 // Based on the article "Fast, High-Quality, Parallel Random Number Generators"
 // by Mark A. Overton, published in Dr. Dobb's Journal on 24 May, 2011.
-// http://drdobbs.com/go-parallel/article/229625477
+// http://www.drdobbs.com/tools/fast-high-quality-parallel-random-number/229625477
 
-package cmn
+package gocommon
 
-import (
-	"sync"
-)
+import "math"
 
+// IRandom - random number generator interface
 type IRandom interface {
 	Next() uint64
-	Next_i16(minVal int16, maxVal int16) int16
-	Next_u16(minVal uint16, maxVal uint16) uint16
-	Next_i32(minVal int32, maxVal int32) int32
-	Next_u32(minVal uint32, maxVal uint32) uint32
-	Next_i64(minVal int64, maxVal int64) int64
-	Next_u64(minVal uint64, maxVal uint64) uint64
 }
 
-type Random struct {
+// Nexti16 - Get the next random int16 number
+func Nexti16(rnd IRandom) int16 {
+	return int16(rnd.Next())
 }
 
-type MyRandom Random
-
-type RandRersResrResdra struct {
-	xx uint64
-	yy uint64
-	zz uint64
+// Nexti16n - Get the next random int16 number within the specified range.
+func Nexti16n(rnd IRandom, minVal int16, maxVal int16) int16 {
+	return minVal + (Nexti16(rnd) % getRangei16(minVal, maxVal))
 }
 
-func (this Random) Next() uint64 {
-	// TODO: Implement
-	return 1
+// Nextu16 - Get the next random uint16 number
+func Nextu16(rnd IRandom) uint16 {
+	return uint16(rnd.Next())
 }
 
-func (this Random) Next_i16(minVal int16, maxVal int16) int16 {
-	return (minVal + (int16(this.Next()) % getRange_i16(minVal, maxVal)))
+// Nextu16n - Get the next random uint16 number within the specified range
+func Nextu16n(rnd IRandom, minVal uint16, maxVal uint16) uint16 {
+	return (minVal + (Nextu16(rnd) % getRangeu16(minVal, maxVal)))
 }
 
-func (this Random) Next_u16(minVal uint16, maxVal uint16) uint16 {
-	return (minVal + (uint16(this.Next()) % getRange_u16(minVal, maxVal)))
+// Nexti32 - Get the next random int32 number
+func Nexti32(rnd IRandom) int32 {
+	return int32(rnd.Next())
 }
 
-func (this Random) Next_i32(minVal int32, maxVal int32) int32 {
-	return (minVal + (int32(this.Next()) % getRange_i32(minVal, maxVal)))
+// Nexti32n - Get the next random int32 number within the specified range
+func Nexti32n(rnd IRandom, minVal int32, maxVal int32) int32 {
+	return minVal + (Nexti32(rnd) % getRangei32(minVal, maxVal))
 }
 
-func (this Random) Next_u32(minVal uint32, maxVal uint32) uint32 {
-	return (minVal + (uint32(this.Next()) % getRange_u32(minVal, maxVal)))
+// Nextu32 - Get the next random unt16 number
+func Nextu32(rnd IRandom) uint32 {
+	return uint32(rnd.Next())
 }
 
-func (this Random) Next_i64(minVal int64, maxVal int64) int64 {
-	return (minVal + (int64(this.Next()) % getRange_i64(minVal, maxVal)))
+// Nextu32n - Get the next random unt16 number within the specified range
+func Nextu32n(rnd IRandom, minVal uint32, maxVal uint32) uint32 {
+	return minVal + (Nextu32(rnd) % getRangeu32(minVal, maxVal))
 }
 
-func (this Random) Next_u64(minVal uint64, maxVal uint64) uint64 {
-	return (minVal + (uint64(this.Next()) % getRange_u64(minVal, maxVal)))
+// Nexti64 - Get the next random int64 number
+func Nexti64(rnd IRandom) int64 {
+	return int64(rnd.Next())
 }
 
-var mutex = &sync.Mutex{}
+// Nexti64n - Get the next random int64 number within the specified range
+func Nexti64n(rnd IRandom, minVal int64, maxVal int64) int64 {
+	return minVal + (Nexti64(rnd) % getRangei64(minVal, maxVal))
+}
 
-/// <summary>
-/// Generate random numbers with a very high random repeat period.
-/// Based on the article "Fast, High-Quality, Parallel Random Number Generators"
-/// by Mark A. Overton, published in Dr. Dobb's Journal on 24 May, 2011.
-/// http://drdobbs.com/go-parallel/article/229625477
-/// </summary>
+// Nextu64 - Get the next random uint64 number
+func Nextu64(rnd IRandom) uint64 {
+	return uint64(rnd.Next())
+}
 
-func (this RandRersResrResdra) Next() uint64 {
-	mutex.Lock()
-	//RERS,   period = 4758085248529 (prime)
-	this.xx = Rotl_u64(this.xx, 8) - Rotl_u64(this.xx, 29)
-	//RESR,   period = 3841428396121 (prime)
-	this.yy = Rotl_u64(this.yy, 21) - this.yy
-	this.yy = Rotl_u64(this.yy, 20)
-	//RESDRA, period = 5345004409 (prime)
-	this.zz = Rotl_u64(this.zz, 42) - this.zz
-	this.zz = this.zz + Rotl_u64(this.zz, 14)
-	retVal := (this.xx ^ this.yy ^ this.zz)
-	mutex.Unlock()
-	return retVal
+// Nextu64n - Get the next random uint64 number within the specified range
+func Nextu64n(rnd IRandom, minVal uint64, maxVal uint64) uint64 {
+	return minVal + (Nextu64(rnd) % getRangeu64(minVal, maxVal))
+}
+
+// Nextf32 - Get the next random float32 number
+func Nextf32(rnd IRandom) float32 {
+	return float32(makef32(int32(rnd.Next()), int32(rnd.Next())))
+}
+
+// Nextf32n - Get the next random float32 number within the specified range
+func Nextf32n(rnd IRandom, minVal float32, maxVal float32) float32 {
+	return float32(minVal + float32((math.Mod(float64(Nextf32(rnd)), float64(getRangef32(minVal, maxVal))))))
+}
+
+// Nextf64 - Get the next random float64 number
+func Nextf64(rnd IRandom) float64 {
+	return float64(makef64(int64(rnd.Next()), int64(rnd.Next())))
+}
+
+// Nextf64n - Get the next random float64 number within the specified range
+func Nextf64n(rnd IRandom, minVal float64, maxVal float64) float64 {
+	return minVal + (math.Mod(Nextf64(rnd), getRangef64(minVal, maxVal)))
 }

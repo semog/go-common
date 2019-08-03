@@ -1,58 +1,58 @@
-package cmn
+package gocommon
 
 import "testing"
 
-func TestRotl_i32(t *testing.T) {
-	rot := Rotl_i32(1, 1)
+func TestRotli32(t *testing.T) {
+	rot := Rotli32(1, 1)
 	if rot != 2 {
 		t.Fail()
 	}
 }
 
-func TestRotl_u32(t *testing.T) {
-	rot := Rotl_u32(1, 1)
+func TestRotlu32(t *testing.T) {
+	rot := Rotlu32(1, 1)
 	if rot != 2 {
 		t.Fail()
 	}
 }
 
-func TestRotl_i64(t *testing.T) {
-	rot := Rotl_i64(1, 1)
+func TestRotli64(t *testing.T) {
+	rot := Rotli64(1, 1)
 	if rot != 2 {
 		t.Fail()
 	}
 }
 
-func TestRotl_u64(t *testing.T) {
-	rot := Rotl_u64(1, 1)
+func TestRotlu64(t *testing.T) {
+	rot := Rotlu64(1, 1)
 	if rot != 2 {
 		t.Fail()
 	}
 }
 
-func TestRotr_i32(t *testing.T) {
-	rot := Rotr_i32(2, 1)
+func TestRotri32(t *testing.T) {
+	rot := Rotri32(2, 1)
 	if rot != 1 {
 		t.Fail()
 	}
 }
 
-func TestRotr_u32(t *testing.T) {
-	rot := Rotr_u32(2, 1)
+func TestRotru32(t *testing.T) {
+	rot := Rotru32(2, 1)
 	if rot != 1 {
 		t.Fail()
 	}
 }
 
-func TestRotr_i64(t *testing.T) {
-	rot := Rotr_i64(2, 1)
+func TestRotri64(t *testing.T) {
+	rot := Rotri64(2, 1)
 	if rot != 1 {
 		t.Fail()
 	}
 }
 
-func TestRotr_64(t *testing.T) {
-	rot := Rotr_u64(2, 1)
+func TestRotr64(t *testing.T) {
+	rot := Rotru64(2, 1)
 	if rot != 1 {
 		t.Fail()
 	}
