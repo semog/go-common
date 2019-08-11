@@ -2,7 +2,18 @@ package gocommon
 
 import (
 	"math"
+	"strconv"
 )
+
+// Rotli - Rotate left int
+func Rotli(value int, count uint) int {
+	return (value << count) | (value >> (strconv.IntSize - count))
+}
+
+// Rotlu - Rotate left uint
+func Rotlu(value uint, count uint) uint {
+	return (value << count) | (value >> (strconv.IntSize - count))
+}
 
 // Rotli32 - Rotate left int32
 func Rotli32(value int32, count uint32) int32 {
@@ -22,6 +33,16 @@ func Rotli64(value int64, count uint32) int64 {
 // Rotlu64 - Rotate left uint64
 func Rotlu64(value uint64, count uint32) uint64 {
 	return (value << count) | (value >> (64 - count))
+}
+
+// Rotri - Rotate right int
+func Rotri(value int, count uint) int {
+	return (value >> count) | (value << (strconv.IntSize - count))
+}
+
+// Rotru - Rotate right uint
+func Rotru(value uint, count uint) uint {
+	return (value >> count) | (value << (strconv.IntSize - count))
 }
 
 // Rotri32 - Rotate right int32
@@ -156,6 +177,22 @@ func getRangef64(minVal, maxVal float64) float64 {
 	return rng
 }
 
+// Mini - Return the smaller int of x or y
+func Mini(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+// Minu - Return the smaller uint of x or y
+func Minu(x, y uint) uint {
+	if x < y {
+		return x
+	}
+	return y
+}
+
 // Mini32 - Return the smaller int32 of x or y
 func Mini32(x, y int32) int32 {
 	if x < y {
@@ -183,6 +220,22 @@ func Mini64(x, y int64) int64 {
 // Minu64 - Return the smaller uint64 of x or y
 func Minu64(x, y uint64) uint64 {
 	if x < y {
+		return x
+	}
+	return y
+}
+
+// Maxi - Return the larger int of x or y
+func Maxi(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
+}
+
+// Maxu - Return the larger uint of x or y
+func Maxu(x, y uint) uint {
+	if x > y {
 		return x
 	}
 	return y

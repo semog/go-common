@@ -2,6 +2,20 @@ package gocommon
 
 import "testing"
 
+func TestRotli(t *testing.T) {
+	rot := Rotli(1, 1)
+	if rot != 2 {
+		t.Fail()
+	}
+}
+
+func TestRotlu(t *testing.T) {
+	rot := Rotlu(1, 1)
+	if rot != 2 {
+		t.Fail()
+	}
+}
+
 func TestRotli32(t *testing.T) {
 	rot := Rotli32(1, 1)
 	if rot != 2 {
@@ -30,6 +44,20 @@ func TestRotlu64(t *testing.T) {
 	}
 }
 
+func TestRotri(t *testing.T) {
+	rot := Rotri(2, 1)
+	if rot != 1 {
+		t.Fail()
+	}
+}
+
+func TestRotru(t *testing.T) {
+	rot := Rotru(2, 1)
+	if rot != 1 {
+		t.Fail()
+	}
+}
+
 func TestRotri32(t *testing.T) {
 	rot := Rotri32(2, 1)
 	if rot != 1 {
@@ -54,6 +82,30 @@ func TestRotri64(t *testing.T) {
 func TestRotr64(t *testing.T) {
 	rot := Rotru64(2, 1)
 	if rot != 1 {
+		t.Fail()
+	}
+}
+
+func TestMini(t *testing.T) {
+	if Mini(5, 7) != 5 {
+		t.Fail()
+	}
+	if Mini(7, 5) != 5 {
+		t.Fail()
+	}
+	if Mini(5, -7) != -7 {
+		t.Fail()
+	}
+	if Mini(-7, 5) != -7 {
+		t.Fail()
+	}
+}
+
+func TestMinu(t *testing.T) {
+	if Minu(5, 7) != 5 {
+		t.Fail()
+	}
+	if Minu(7, 5) != 5 {
 		t.Fail()
 	}
 }
@@ -102,6 +154,30 @@ func TestMinu64(t *testing.T) {
 		t.Fail()
 	}
 	if Minu64(7, 5) != 5 {
+		t.Fail()
+	}
+}
+
+func TestMaxi(t *testing.T) {
+	if Maxi(5, 7) != 7 {
+		t.Fail()
+	}
+	if Maxi(7, 5) != 7 {
+		t.Fail()
+	}
+	if Maxi(5, -7) != 5 {
+		t.Fail()
+	}
+	if Maxi(-7, 5) != 5 {
+		t.Fail()
+	}
+}
+
+func TestMaxu(t *testing.T) {
+	if Maxu(5, 7) != 7 {
+		t.Fail()
+	}
+	if Maxu(7, 5) != 7 {
 		t.Fail()
 	}
 }
