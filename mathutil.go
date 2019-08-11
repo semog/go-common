@@ -49,7 +49,7 @@ func Rotru64(value uint64, count uint32) uint64 {
 // The return values will be:
 //    base = 3
 //    frac = 141592
-func Decompf32(val float32) (base int32, frac int32) {
+func Decompf32(val float32) (base, frac int32) {
 	b, f := math.Modf(float64(val))
 	return int32(b), int32(f)
 }
@@ -59,7 +59,7 @@ func Decompf32(val float32) (base int32, frac int32) {
 // The return values will be:
 //    base = 3
 //    frac = 141592
-func Decompf64(val float64) (base int64, frac int64) {
+func Decompf64(val float64) (base, frac int64) {
 	b, f := math.Modf(val)
 	return int64(b), int64(f)
 }
@@ -69,7 +69,7 @@ func Decompf64(val float64) (base int64, frac int64) {
 //    frac = 141592
 // The return float64 value will be:
 //    3.14159
-func Makef32(base int32, frac int32) float32 {
+func Makef32(base, frac int32) float32 {
 	b := float32(base)
 	f := float32(frac)
 	for f > 1.0 {
@@ -83,7 +83,7 @@ func Makef32(base int32, frac int32) float32 {
 //    frac = 141592
 // The return float64 value will be:
 //    3.14159
-func Makef64(base int64, frac int64) float64 {
+func Makef64(base, frac int64) float64 {
 	b := float64(base)
 	f := float64(frac)
 	for f > 1.0 {
@@ -92,7 +92,7 @@ func Makef64(base int64, frac int64) float64 {
 	return b + f
 }
 
-func getRangei16(minVal int16, maxVal int16) int16 {
+func getRangei16(minVal, maxVal int16) int16 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
 		return 1
@@ -100,7 +100,7 @@ func getRangei16(minVal int16, maxVal int16) int16 {
 	return rng
 }
 
-func getRangeu16(minVal uint16, maxVal uint16) uint16 {
+func getRangeu16(minVal, maxVal uint16) uint16 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
 		return 1
@@ -108,7 +108,7 @@ func getRangeu16(minVal uint16, maxVal uint16) uint16 {
 	return rng
 }
 
-func getRangei32(minVal int32, maxVal int32) int32 {
+func getRangei32(minVal, maxVal int32) int32 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
 		return 1
@@ -116,7 +116,7 @@ func getRangei32(minVal int32, maxVal int32) int32 {
 	return rng
 }
 
-func getRangeu32(minVal uint32, maxVal uint32) uint32 {
+func getRangeu32(minVal, maxVal uint32) uint32 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
 		return 1
@@ -124,7 +124,7 @@ func getRangeu32(minVal uint32, maxVal uint32) uint32 {
 	return rng
 }
 
-func getRangei64(minVal int64, maxVal int64) int64 {
+func getRangei64(minVal, maxVal int64) int64 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
 		return 1
@@ -132,7 +132,7 @@ func getRangei64(minVal int64, maxVal int64) int64 {
 	return rng
 }
 
-func getRangeu64(minVal uint64, maxVal uint64) uint64 {
+func getRangeu64(minVal, maxVal uint64) uint64 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
 		return 1
@@ -140,7 +140,7 @@ func getRangeu64(minVal uint64, maxVal uint64) uint64 {
 	return rng
 }
 
-func getRangef32(minVal float32, maxVal float32) float32 {
+func getRangef32(minVal, maxVal float32) float32 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
 		return 1.0
@@ -148,10 +148,74 @@ func getRangef32(minVal float32, maxVal float32) float32 {
 	return rng
 }
 
-func getRangef64(minVal float64, maxVal float64) float64 {
+func getRangef64(minVal, maxVal float64) float64 {
 	rng := (maxVal - minVal)
 	if 0 == rng {
 		return 1.0
 	}
 	return rng
+}
+
+// Mini32 - Return the smaller int32 of x or y
+func Mini32(x, y int32) int32 {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+// Minu32 - Return the smaller uint32 of x or y
+func Minu32(x, y uint32) uint32 {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+// Mini64 - Return the smaller int64 of x or y
+func Mini64(x, y int64) int64 {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+// Minu64 - Return the smaller uint64 of x or y
+func Minu64(x, y uint64) uint64 {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+// Maxi32 - Return the larger int32 of x or y
+func Maxi32(x, y int32) int32 {
+	if x > y {
+		return x
+	}
+	return y
+}
+
+// Maxu32 - Return the larger uint32 of x or y
+func Maxu32(x, y uint32) uint32 {
+	if x > y {
+		return x
+	}
+	return y
+}
+
+// Maxi64 - Return the larger int64 of x or y
+func Maxi64(x, y int64) int64 {
+	if x > y {
+		return x
+	}
+	return y
+}
+
+// Maxu64 - Return the larger uint64 of x or y
+func Maxu64(x, y uint64) uint64 {
+	if x > y {
+		return x
+	}
+	return y
 }

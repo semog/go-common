@@ -57,3 +57,99 @@ func TestRotr64(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestMini32(t *testing.T) {
+	if Mini32(5, 7) != 5 {
+		t.Fail()
+	}
+	if Mini32(7, 5) != 5 {
+		t.Fail()
+	}
+	if Mini32(5, -7) != -7 {
+		t.Fail()
+	}
+	if Mini32(-7, 5) != -7 {
+		t.Fail()
+	}
+}
+
+func TestMinu32(t *testing.T) {
+	if Minu32(5, 7) != 5 {
+		t.Fail()
+	}
+	if Minu32(7, 5) != 5 {
+		t.Fail()
+	}
+}
+
+func TestMini64(t *testing.T) {
+	if Mini64(5, 7) != 5 {
+		t.Fail()
+	}
+	if Mini64(7, 5) != 5 {
+		t.Fail()
+	}
+	if Mini64(5, -7) != -7 {
+		t.Fail()
+	}
+	if Mini64(-7, 5) != -7 {
+		t.Fail()
+	}
+}
+
+func TestMinu64(t *testing.T) {
+	if Minu64(5, 7) != 5 {
+		t.Fail()
+	}
+	if Minu64(7, 5) != 5 {
+		t.Fail()
+	}
+}
+
+func TestMaxi32(t *testing.T) {
+	if Maxi32(5, 7) != 7 {
+		t.Fail()
+	}
+	if Maxi32(7, 5) != 7 {
+		t.Fail()
+	}
+	if Maxi32(5, -7) != 5 {
+		t.Fail()
+	}
+	if Maxi32(-7, 5) != 5 {
+		t.Fail()
+	}
+}
+
+func TestMaxu32(t *testing.T) {
+	if Maxu32(5, 7) != 7 {
+		t.Fail()
+	}
+	if Maxu32(7, 5) != 7 {
+		t.Fail()
+	}
+}
+
+func TestMaxi64(t *testing.T) {
+	if Maxi64(5, 7) != 7 {
+		t.Fail()
+	}
+	if Maxi64(7, 5) != 7 {
+		t.Fail()
+	}
+	if Maxi64(5, -7) != 5 {
+		t.Fail()
+	}
+	if Maxi64(-7, 5) != 5 {
+		t.Fail()
+	}
+}
+
+func TestMaxu64(t *testing.T) {
+	if Maxu64(5, 7) != 7 {
+		t.Fail()
+	}
+	if Maxu64(7, 5) != 7 {
+		t.Fail()
+	}
+}
