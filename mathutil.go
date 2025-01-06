@@ -66,30 +66,39 @@ func Rotru64(value uint64, count uint32) uint64 {
 }
 
 // Decompf32 - Decompose a float32 value int two numbers. Given the following:
-//    3.141592
+//
+//	3.141592
+//
 // The return values will be:
-//    base = 3
-//    frac = 141592
+//
+//	base = 3
+//	frac = 141592
 func Decompf32(val float32) (base, frac int32) {
 	b, f := math.Modf(float64(val))
 	return int32(b), int32(f)
 }
 
 // Decompf64 - Decompose a float64 value int two numbers. Given the following:
-//    3.141592
+//
+//	3.141592
+//
 // The return values will be:
-//    base = 3
-//    frac = 141592
+//
+//	base = 3
+//	frac = 141592
 func Decompf64(val float64) (base, frac int64) {
 	b, f := math.Modf(val)
 	return int64(b), int64(f)
 }
 
 // Makef32 - Make a float32 variable from two numbers. Given the following:
-//    base = 3
-//    frac = 141592
+//
+//	base = 3
+//	frac = 141592
+//
 // The return float64 value will be:
-//    3.14159
+//
+//	3.14159
 func Makef32(base, frac int32) float32 {
 	b := float32(base)
 	f := float32(frac)
@@ -100,10 +109,13 @@ func Makef32(base, frac int32) float32 {
 }
 
 // Makef64 - Make a float64 variable from two numbers. Given the following:
-//    base = 3
-//    frac = 141592
+//
+//	base = 3
+//	frac = 141592
+//
 // The return float64 value will be:
-//    3.14159
+//
+//	3.14159
 func Makef64(base, frac int64) float64 {
 	b := float64(base)
 	f := float64(frac)
@@ -115,7 +127,7 @@ func Makef64(base, frac int64) float64 {
 
 func getRangei16(minVal, maxVal int16) int16 {
 	rng := (maxVal - minVal)
-	if 0 == rng {
+	if rng == 0 {
 		return 1
 	}
 	return rng
@@ -123,7 +135,7 @@ func getRangei16(minVal, maxVal int16) int16 {
 
 func getRangeu16(minVal, maxVal uint16) uint16 {
 	rng := (maxVal - minVal)
-	if 0 == rng {
+	if rng == 0 {
 		return 1
 	}
 	return rng
@@ -131,7 +143,7 @@ func getRangeu16(minVal, maxVal uint16) uint16 {
 
 func getRangei32(minVal, maxVal int32) int32 {
 	rng := (maxVal - minVal)
-	if 0 == rng {
+	if rng == 0 {
 		return 1
 	}
 	return rng
@@ -139,7 +151,7 @@ func getRangei32(minVal, maxVal int32) int32 {
 
 func getRangeu32(minVal, maxVal uint32) uint32 {
 	rng := (maxVal - minVal)
-	if 0 == rng {
+	if rng == 0 {
 		return 1
 	}
 	return rng
@@ -147,7 +159,7 @@ func getRangeu32(minVal, maxVal uint32) uint32 {
 
 func getRangei64(minVal, maxVal int64) int64 {
 	rng := (maxVal - minVal)
-	if 0 == rng {
+	if rng == 0 {
 		return 1
 	}
 	return rng
@@ -155,7 +167,7 @@ func getRangei64(minVal, maxVal int64) int64 {
 
 func getRangeu64(minVal, maxVal uint64) uint64 {
 	rng := (maxVal - minVal)
-	if 0 == rng {
+	if rng == 0 {
 		return 1
 	}
 	return rng
@@ -163,7 +175,7 @@ func getRangeu64(minVal, maxVal uint64) uint64 {
 
 func getRangef32(minVal, maxVal float32) float32 {
 	rng := (maxVal - minVal)
-	if 0 == rng {
+	if rng == 0 {
 		return 1.0
 	}
 	return rng
@@ -171,7 +183,7 @@ func getRangef32(minVal, maxVal float32) float32 {
 
 func getRangef64(minVal, maxVal float64) float64 {
 	rng := (maxVal - minVal)
-	if 0 == rng {
+	if rng == 0 {
 		return 1.0
 	}
 	return rng
